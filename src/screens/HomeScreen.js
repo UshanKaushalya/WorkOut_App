@@ -1,6 +1,9 @@
 import {Image, SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View} from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {MagnifyingGlassIcon} from 'react-native-heroicons/outline'
+import Categories from "../components/categories";
+import SortCategories from "../components/SortCategories";
+import Workouts from "../components/Workouts";
 
 export default function HomeScreen(){
     return(
@@ -21,6 +24,17 @@ export default function HomeScreen(){
                    </View>
                </View>
 
+               <View className="mb-4">
+                    <Categories />
+               </View>
+
+               <View className="mb-4">
+                   <SortCategories />
+               </View>
+
+               <View>
+                    <Workouts />
+               </View>
            </ScrollView>
         </SafeAreaView>
     )
