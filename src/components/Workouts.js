@@ -4,15 +4,18 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import {LinearGradient} from "expo-linear-gradient";
 import {HeartIcon} from "react-native-heroicons/solid";
 import {useState} from "react";
+import {useNavigation} from "@react-navigation/native";
 
 
 export default function SortCategories(){
+    const navigation = useNavigation();
+
     return(
         <View className="mx-4 flex-row justify-between flex-wrap">
             {
                 workouts.map((item, index) => {
                     return(
-                        <WorkoutCard item={item} key={index} />
+                        <WorkoutCard navigation={navigation} item={item} key={index} />
                     )
                 })
             }
@@ -20,12 +23,13 @@ export default function SortCategories(){
     )
 }
 
-const WorkoutCard = ({item}) => {
+const WorkoutCard = ({item, navigation}) => {
 
     const [isFavourite, toggleIsFavourite] = useState(false)
 
     return(
         <TouchableOpacity
+            onPress={() => navigation.navigate('Workout', {...item})}
             style={{width: wp(44), height: wp(65)}}
             className="flex justify-end relative p-4 py-6 space-y-2 mb-5"
         >
